@@ -1,0 +1,15 @@
+{
+    "name": "fouadlamnaouar/cour-php",
+    "autoload": {
+        "psr-4": {
+            "Fouadlamnaouar\\CourPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fouuuadi",
+            "email": "fouadlamnaouar18@gmail.com"
+        }
+    ],
+    "require": {}
+}
