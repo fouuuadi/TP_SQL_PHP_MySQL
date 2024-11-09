@@ -1,20 +1,30 @@
 <?php
-namespace Fouadlamnaouar\CourPhp\Entity;
+namespace Fouadlamnaouar\TP_SQL_PHP_MySQL\Entity;
 
 class ProductLine 
 
 {
+    
+    private \PDO $connector;
 
-    public string $productLine;
-
-    public function __construct(string $name)
+    // public function __construct(string $name)
+    public function __construct(\PDO $connector)
     {
-        $this->productLine = $name;
+        $this->connector = $connector;
     }
 
-    public function f(int $y): int 
+    // public function f(int $y): int 
+    // {
+    //     return $y;
+    // }
+
+    public function getProductLines(): array
     {
-        return $y;
+        $sql ="SELECT * FROM productLines";
+        $statement = $this->connector->prepare($sql);
+        $result = $statement->execute([]);
+
+        return $statement-> fetchALL(\PDO::FETCH_ASSOC);
     }
 
 }

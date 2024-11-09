@@ -2,18 +2,24 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Fouadlamnaouar\CourPhp\Entity\ProductLine;
-use Fouadlamnaouar\CourPhp\DBAL\Connector;
+use Fouadlamnaouar\TP_SQL_PHP_MySQL\Entity\ProductLine;
+use Fouadlamnaouar\TP_SQL_PHP_MySQL\DBAL\Connector;
 
+//initialisation de la connextion
+//creation d'une instance de la class Connector 
+$dbConnector = new Connector();
+$dbh = $dbConnector->getConnection();
 
+//creation d'une instance de la class ProductLine
+$ppl1 = new ProductLine($dbh);
 
-$ppl1 = new ProductLine('TOTO');
-$title = $ppl1->productLine;  
-var_dump($title);  
-echo $title;
+//recupere des lignes du produits
+$productLines = $ppl1->getProductLines();
 
-$dbh = new Connector();
-var_dump($dbh);
+//afficher l'objet productLines
+var_dump($productLines);  
+echo $productLines;
+
 
 require_once __DIR__ . '/../templates/base.html.php';
 ?>
